@@ -1,0 +1,31 @@
+<div *ngIf="!showComments" class="contentPost">
+    <h1>Posts</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of posts">
+                <th scope="row">{{item.id}}</th>
+                <td><input type="text" class="form-control" value="{{item.title}}"></td>
+                <td><input type="text" class="form-control" value="{{item.body}}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="updatePost(item);">Update</button>
+                    <button type="button" class="btn btn-primary" (click)="getComments(item.id);">Ver
+                        comentarios</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="showComments" class="tab-pane contentComment">
+    <h1>Comments</h1>
+    <button type="button" class="btn btn-primary" (click)="hideComments();">Volver</button>
+    <app-comment [idComment]="idComment"></app-comment> 
+</div>
