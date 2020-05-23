@@ -50,7 +50,7 @@ export class CommentComponent implements OnInit {
       body: this.body
     };
     this.commentService.creeateComment(JSON.stringify(commentCrt)).subscribe(res => {
-      debugger;
+      
       var postArr = res.text().replace(/'/g, "\"");
       var message = JSON.parse(postArr);
       var text = message["message"];
@@ -63,6 +63,20 @@ export class CommentComponent implements OnInit {
         this.body = "";
         alert("Create Comment successful.");
       }
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  deleteComment(id:number, index:number){
+    this.commentService.deleteComment(id).subscribe(res => {
+      
+      var postArr = res.text().replace(/'/g, "\"");
+      var message = JSON.parse(postArr);
+      var text = message["message"];
+      alert(message["message"]);
+      this.comments.splice(index, 1);
+      
     }, err => {
       console.log(err);
     });

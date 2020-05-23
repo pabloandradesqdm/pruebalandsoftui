@@ -19,4 +19,12 @@ export class CommentService {
 
     return this.http.post(url, comment, { headers: headers });
   }
+
+  public deleteComment(id: number) {
+    let headers = new Headers();
+    let url = "http://localhost:8084/Post/DeleteComment?id=" + id;
+
+    return this.http.post(url, id, { headers: headers });
+  }
+  
 }

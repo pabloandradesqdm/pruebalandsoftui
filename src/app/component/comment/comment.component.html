@@ -11,14 +11,18 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Body</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of comments">
+        <tr *ngFor="let item of comments; index as i;">
             <th scope="row">{{item.id}}</th>
             <td>{{item.name}}</td>
             <td>{{item.body}}</td>
             <td>{{item.body}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="deleteComment(item.id, i);">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>
